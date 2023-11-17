@@ -1,0 +1,36 @@
+<section class="header-container">
+  <!-- Large screen -->
+  <div class="header-container-logo">
+    <h1>TechZone</h1>
+  </div>
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" routerLink="/home">Home</button>
+    <button mat-raised-button color="primary" routerLink="/product-listings">
+      Products
+    </button>
+    <button mat-raised-button color="primary" routerLink="/order-details">
+      Orders
+    </button>
+    <button mat-raised-button color="primary" (click)="login()">Login</button>
+  </div>
+  <!-- Mobile screen -->
+  <div class="header-container-menu-s">
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-raised-button color="primary" routerLink="/home">Home</button>
+      <button mat-raised-button color="primary" routerLink="/product-listings">
+        Products
+      </button>
+      <button mat-raised-button color="primary" routerLink="/order-details">
+        Orders
+      </button>
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
+    </mat-menu>
+  </div>
+</section>

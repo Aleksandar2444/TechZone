@@ -1,0 +1,81 @@
+@import "variables";
+
+.product-listings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: $margin-7xl;
+
+  h1 {
+    text-align: center;
+  }
+
+  &-input {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+    input {
+      width: 60%;
+      height: 30px;
+      border-radius: 10px;
+      border: 1px solid $gray-one;
+      padding: 0 $padding-xxs;
+      background: $gray;
+      color: $green-yellow;
+
+      &::placeholder {
+        color: $green-yellow;
+      }
+    }
+  }
+
+  &-paginator {
+    margin-top: $margin-xxxl;
+  }
+
+  &-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .example-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 400px;
+      background: $modern-grey;
+      margin: $margin-xxxl;
+
+      .button--add {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          background: $green-yellow;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .product-listings {
+    &-input {
+      input {
+        width: 40%;
+      }
+    }
+
+    &-card-wrapper {
+      .example-card {
+        max-width: 400px;
+      }
+    }
+  }
+}

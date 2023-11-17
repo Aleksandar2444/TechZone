@@ -1,0 +1,41 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@@features/*": ["src/app/features/*"],
+      "@@features": ["src/app/features"],
+      "@@home/*": ["src/app/features/home/components/*"],
+      "@@home": ["src/app/features/home/components"],
+      "@@shared/*": ["src/app/shared/*"],
+      "@@shared": ["src/app/shared"],
+      "@@app": ["src/app"]
+    },
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "esnext", "dom", "esnext.asynciterable"],
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

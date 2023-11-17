@@ -1,0 +1,38 @@
+<section class="product-listings">
+  <h1>Products</h1>
+
+  <div class="product-listings-input">
+    <input
+      [(ngModel)]="filterText"
+      (input)="onSearchChange()"
+      placeholder="Search products"
+    />
+  </div>
+
+  <div class="product-listings-paginator">
+    <mat-paginator
+      [length]="totalProducts"
+      [pageSize]="pageSize"
+      (page)="onPageChange($event)"
+      aria-label="Select page"
+    ></mat-paginator>
+  </div>
+
+  <div class="product-listings-card-wrapper">
+    <mat-card *ngFor="let product of filteredProducts" class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product.slug }}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{ product.description }}</p>
+        <p>Post created: {{ product.createdAt }}</p>
+      </mat-card-content>
+      <mat-card-actions class="button--add">
+        <button mat-raised-button (click)="goToProductDetail(product.id)">
+          View details
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>

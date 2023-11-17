@@ -1,0 +1,40 @@
+/* You can add global styles to this file, and also import other style files */
+@import "variables";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-menu-content,
+.mat-mdc-menu-content .mat-mdc-menu-item .mat-mdc-menu-item-text {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+  background: $green-yellow !important;
+}
+
+.cdk-overlay-pane {
+  right: 10px !important;
+}
+
+.mat-elevation-z8,
+.mat-mdc-elevation-specific.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+  color: $green-yellow;
+}
+
+.mat-mdc-paginator-container {
+  justify-content: center !important;
+}

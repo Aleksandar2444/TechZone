@@ -1,0 +1,30 @@
+@import "variables";
+
+.product-detail-container {
+  h1 {
+    text-align: center;
+  }
+
+  .card-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .example-card {
+      display: flex;
+      flex-direction: r;
+      max-width: 800px;
+      background: darkgray;
+      margin: $margin-xxxl;
+
+      .button-wrapper {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          background: $green-yellow;
+        }
+      }
+    }
+  }
+}
