@@ -14,6 +14,7 @@ import {
   ADD_TO_ORDER_MUTATION,
   GET_ORDER_DETAILS_QUERY,
   LOGIN_MUTATION,
+  GetProductsOptions,
 } from '@@shared/gql-queries/graphql-queries';
 import { Product } from '@@features/product-listings/models/product';
 
@@ -23,11 +24,15 @@ import { Product } from '@@features/product-listings/models/product';
 export class GraphqlService {
   constructor(private readonly apollo: Apollo) {}
 
-  getProducts(): Observable<Product> {
+  getProducts(options: GetProductsOptions): Observable<Product> {
     return this.apollo
       .query<Product>({
         query: GET_PRODUCTS_QUERY,
-        // variables: { take: 10, skip: 10 },
+        variables: {
+          take: 20,
+          orderBy: options.orderBy,
+          skipNumber: options.skipNumber,
+        },
       })
       .pipe(map((result) => result.data));
   }

@@ -1,8 +1,23 @@
 import { gql } from 'apollo-angular';
 
+export enum SortOrder {
+  ASC = 'ASC',
+  DESC = 'DESC',
+}
+export interface GetProductsOptions {
+  orderBy: SortOrder;
+  skipNumber: number;
+}
+
 export const GET_PRODUCTS_QUERY = gql`
-  {
-    products(options: { take: 100, sort: { name: ASC } }) {
+  query GetAllProducts(
+    $take: Int!
+    $orderBy: SortOrder!
+    $skipNumber: Int! = 0
+  ) {
+    products(
+      options: { take: $take, sort: { name: $orderBy }, skip: $skipNumber }
+    ) {
       items {
         id
         name

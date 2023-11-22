@@ -7,6 +7,7 @@ import { takeUntil, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { setFilterText } from '@@shared/store/product.actions';
 import { getFilterText } from '@@shared/store/product.selectors';
+import { SortOrder } from '@@shared/gql-queries/graphql-queries';
 
 @Component({
   selector: 'app-product-listings',
@@ -14,12 +15,12 @@ import { getFilterText } from '@@shared/store/product.selectors';
   styleUrls: ['./product-listings.component.scss'],
 })
 export class ProductListingsComponent extends BaseComponent implements OnInit {
-  products: Product[];
+  products: Product[] = [];
   filteredProducts: Product[] = [];
   selectedSort: string = 'name';
   filterText: string = '';
   currentPage: number = 0;
-  pageSize: number = 12;
+  pageSize: number = 10;
   totalProducts: number = 0;
 
   constructor(
@@ -39,13 +40,19 @@ export class ProductListingsComponent extends BaseComponent implements OnInit {
     });
   }
 
-  private fetchProducts() {
+  //* orderBy & skipNumber should come from the store
+  private fetchProducts(skip: number = 0) {
     this.graphqlService
-      .getProducts()
+      .getProducts({
+        orderBy: SortOrder.ASC,
+        skipNumber: skip,
+      })
       .pipe(
         takeUntil(this.destroy$),
         tap((productResponse: any) => {
-          this.products = productResponse.products.items;
+          //* Add the already existing ones and the newly ones
+          this.products = [...this.products, ...productResponse.products.items];
+          console.log('PRODUCTS', productResponse.products.items);
           //* Initialize filteredProducts
           this.filteredProducts = [...this.products];
 
@@ -76,6 +83,18 @@ export class ProductListingsComponent extends BaseComponent implements OnInit {
 
   onPageChange(event: any) {
     this.currentPage = event.pageIndex;
+    console.log(event);
+
+    const remaining = event.length - event.pageSize * event.pageIndex;
+    console.log(remaining);
+    const isLast = remaining === event.pageSize;
+
+    console.log('is last', isLast);
+
+    if (isLast) {
+      console.log('event length', event.length);
+      this.fetchProducts(event.length);
+    }
     this.filterProducts();
   }
 
