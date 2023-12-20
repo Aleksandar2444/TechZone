@@ -1,2 +1,2 @@
 # TechZone
-e-commerce web application with Angular
+Angular + GraphQL e-commerce web application
